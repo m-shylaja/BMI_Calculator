@@ -1,28 +1,43 @@
-function calculateBMI() {
-  const weight = parseFloat(document.getElementById("weight").value);
-  const heightCm = parseFloat(document.getElementById("height").value);
+const bmiText = document.getElementById("bmi");
+const descText = document.getElementById("desc");
+const form = document.querySelector("form");
+const resetBtn = document.getElementById("resetBtn");
 
-  if (!weight || !heightCm || weight <= 0 || heightCm <= 0) {
-    alert("Please enter valid values for height and weight.");
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const weight = parseFloat(document.getElementById("weight").value);
+  const height = parseFloat(document.getElementById("height").value);
+
+  if (isNaN(weight) || isNaN(height) || weight <= 0 || height <= 0) {
+    alert("Please enter a valid weight and height");
     return;
   }
 
-  const heightM = heightCm / 100;
-  const bmi = (weight / (heightM * heightM)).toFixed(1);
+  const heightInMeters = height / 100;
+  const bmi = weight / (heightInMeters * heightInMeters);
 
-  let category = "";
-  if (bmi < 18.5) category = "Underweight";
-  else if (bmi < 24.9) category = "Normal weight";
-  else if (bmi < 29.9) category = "Overweight";
-  else category = "Obese";
+  const category = getBMICategory(bmi);
+  bmiText.textContent = bmi.toFixed(2);
+  descText.textContent = `You are ${category.label}`;
+  descText.style.color = category.color;
+});
 
-  document.getElementById("resultBox").style.display = "block";
-  document.getElementById("bmiValue").textContent = `BMI: ${bmi}`;
-  document.getElementById("bmiCategory").textContent = category;
+function getBMICategory(bmi) {
+  if (bmi < 18.5) {
+    return { label: "Underweight", color: "orange" };
+  } else if (bmi < 25) {
+    return { label: "Normal", color: "green" };
+  } else if (bmi < 30) {
+    return { label: "Overweight", color: "lightcoral" };
+  } else {
+    return { label: "Obese", color: "crimson" };
+  }
 }
 
-function resetForm() {
-  document.getElementById("weight").value = "";
-  document.getElementById("height").value = "";
-  document.getElementById("resultBox").style.display = "none";
-}
+// Reset BMI and description on reset
+resetBtn.addEventListener("click", () => {
+  bmiText.textContent = "0";
+  descText.textContent = "N/A";
+  descText.style.color = "black";
+});
