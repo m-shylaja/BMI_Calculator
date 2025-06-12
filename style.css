@@ -1,58 +1,119 @@
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #f0f2f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
-.bmi-container {
-  background: white;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-  width: 300px;
-  text-align: center;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  font-size: 16px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  margin: 5px 0;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:first-of-type {
-  background: #007bff;
-  color: white;
-}
-
-button:last-of-type {
-  background: #f44336;
-  color: white;
-}
-
-.result {
-  margin-top: 20px;
-  display: none;
-  border-top: 1px solid #ddd;
-  padding-top: 10px;
-}
-
-.result p {
-  font-size: 18px;
-  font-weight: bold;
-}
+:root {
+    --underweight: orange;
+    --normal: green;
+    --overweight: lightcoral;
+    --obese: crimson;
+  }
+  
+  body {
+    background-color: #f4f4f4;
+    display: grid;
+    place-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 420px;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.25);
+    display: grid;
+    gap: 1rem;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  .calculator {
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .value1 {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .inputText {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+  }
+  
+  .inputValue {
+    text-align: center;
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .button1 {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .calculator button {
+    width: 140px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    background: blue;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+  }
+  
+  .calculator button[type="reset"] {
+    background: gray;
+  }
+  
+  .calculator button:hover {
+    filter: brightness(115%);
+  }
+  
+  .output {
+    text-align: center;
+  }
+  
+  .output #bmi {
+    font-size: 2rem;
+    margin: 0.2rem 0;
+  }
+  
+  .output #desc {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .bmi-scale {
+    display: flex;
+    margin-top: 1rem;
+  }
+  
+  .bmi-scale div {
+    flex: 1;
+    text-align: center;
+    text-transform: uppercase;
+    border-top: 5px solid var(--color);
+    padding: 10px;
+  }
+  
+  .bmi-scale h4 {
+    font-size: 0.75rem;
+    color: slategray;
+  }
+  
